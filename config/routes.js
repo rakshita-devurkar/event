@@ -34,7 +34,30 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  //'get/insert' : 'EventController.insert',
+  'post /event/insert' : 'EventController.insert',
+  'get /eventinsertview' : 'EventController.eventinsertview',
+  'get /viewevents' : 'EventController.viewevents',
+  'get /viewhomepage' : 'EventController.viewhomepage',
+  'get /oneevent' : 'EventController.oneevent',
+  'get /event/updateview' : 'EventController.updateview',
+  'post /event/update' : 'EventController.update',
+  'get /event/delete' : 'EventController.delete',
+
+  'get /attendeeinsertview' : 'AttendeeController.attendeeinsertview',
+  'post /attendee/insert' : 'AttendeeController.insert',
+  'get /viewattendees' : 'AttendeeController.viewattendees',
+  'get /viewhomepage' : 'AttendeeController.viewhomepage',
+  'get /oneattendee' : 'AttendeeController.oneattendee',
+  'get /attendee/updateview' : 'AttendeeController.updateview',
+  'post /attendee/update' : 'AttendeeController.update',
+  'get /attendee/delete' : 'AttendeeController.delete',
+
+
+
+  //'get /findone' : 'EventController.findone',
+  
 
   /***************************************************************************
   *                                                                          *

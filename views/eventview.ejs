@@ -1,0 +1,23 @@
+<h1> All events </h1> <br>
+<table border =1>
+<tr>
+<td> Eventname </td>
+<td> Location </td>
+<td> Date </td>
+</tr>
+<% for(var i=0;i<inserted.length;i++){%>
+       <tr>
+           <td>
+              <a href = "/oneevent?id= <%= inserted[i].id%>"> 
+              <%= inserted[i].name %> </a>
+           </td>
+           <td>
+           	<%= inserted[i].location %>
+           </td>
+           <td>
+              <%= inserted[i].date %>
+           </td>
+       </tr>       
+      <% } %>
+</table> <br><br><br>
+<a href = "/viewhomepage"> Back to Homepage </a>

@@ -1,0 +1,24 @@
+<table border =1>
+<tr>
+<td> Eventname </td>
+<td> Location </td>
+<td> Date </td>
+</tr>
+       <tr>
+           <td>
+              <%= inserted.name %> 
+           </td>
+           <td>
+           	<%= inserted.location %>
+           </td>
+           <td>
+              <%= inserted.date %>
+           </td>
+       </tr>       
+</table> 
+<br><br><br>
+<a href = "/event/updateview?id=<%=inserted.id%>"> Update details </a>
+<br><br><br>
+<a href = "/event/delete?id=<%=inserted.id%>"> Delete Event </a>
+<br><br><br>
+<a href = "/viewhomepage"> Back to Homepage </a>

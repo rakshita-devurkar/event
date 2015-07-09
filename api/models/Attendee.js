@@ -9,7 +9,17 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string' }
+    id : {type: 'integer',
+			autoIncrement : 'true'},
+    name : { type: 'string'},
+    
+  },
+
+  type:{
+  	
+  	model : 'Event',
+  	type : 'string'
   }
+  
 };
 

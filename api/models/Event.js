@@ -9,7 +9,13 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string' }
-  }
+  	id : {type: 'integer',
+  		   autoIncrement: true
+  		},
+    name : { type: 'string' },
+    location : {type: 'string'},
+    date : {type:'string'}
+    
+  },
 };
 

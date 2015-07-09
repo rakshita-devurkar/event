@@ -19,49 +19,42 @@
  * For more information on configuring custom routes, check out:
  * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
-
 module.exports.routes = {
-
   /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
-
+   *                                                                          *
+   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+   * etc. depending on your default view engine) your home page.              *
+   *                                                                          *
+   * (Alternatively, remove this and add an `index.html` file in your         *
+   * `assets` directory)                                                      *
+   *                                                                          *
+   ***************************************************************************/
   '/': {
     view: 'homepage'
   },
- 
-  'get /event/new' : 'EventController.new',
-  'post /event/insert' : 'EventController.insert',
-  'get /event/viewall' : 'EventController.viewall',
-  'get /homepage' : 'EventController.homepage',
-  'get /event/view' : 'EventController.view',
-  'get /event/updateview' : 'EventController.updateview',
-  'post /event/update' : 'EventController.update',
-  'get /event/delete' : 'EventController.delete',
-
-  'get /attendee/new' : 'AttendeeController.new',
-  'post /attendee/insert' : 'AttendeeController.insert',
-  'get /attendee/viewall' : 'AttendeeController.viewall',
-  'get /homepage' : 'AttendeeController.homepage',
-  'get /attendee/view' : 'AttendeeController.view',
-  'get /attendee/updateview' : 'AttendeeController.updateview',
-  'post /attendee/update' : 'AttendeeController.update',
-  'get /attendee/delete' : 'AttendeeController.delete',
-
+  'get /event/new': 'EventController.new',
+  'post /event/create': 'EventController.create',
+  'get /event/find': 'EventController.find',
+  'get /homepage': 'EventController.homepage',
+  'get /event/findone': 'EventController.findone',
+  'get /event/edit': 'EventController.edit',
+  'post /event/update': 'EventController.update',
+  'delete /event/destroy': 'EventController.destroy',
+  'get /attendee/new': 'AttendeeController.new',
+  'post /attendee/create': 'AttendeeController.create',
+  'get /attendee/find': 'AttendeeController.find',
+  'get /homepage': 'AttendeeController.homepage',
+  'get /attendee/findone': 'AttendeeController.findone',
+  'get /attendee/edit': 'AttendeeController.edit',
+  'post /attendee/update': 'AttendeeController.update',
+  'delete /attendee/delete': 'AttendeeController.destroy',
   /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
-
+   *                                                                          *
+   * Custom routes here...                                                    *
+   *                                                                          *
+   * If a request to a URL doesn't match any of the custom routes above, it   *
+   * is matched against Sails route blueprints. See `config/blueprints.js`    *
+   * for configuration options and examples.                                  *
+   *                                                                          *
+   ***************************************************************************/
 };

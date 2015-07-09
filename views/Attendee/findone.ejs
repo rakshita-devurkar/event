@@ -1,0 +1,21 @@
+<table border =1>
+  <tr>
+    <td> Attendee name </td>
+    <td> Event </td>
+  </tr>
+  <tr>
+    <td>
+      <%= inserted.name %>
+    </td>
+    <td>
+      <%= inserted.type %>
+    </td>
+
+  </tr>
+</table>
+<br><br><br>
+<a href = "/attendee/edit?id=<%=inserted.id%>"> Update details </a>
+<br><br><br>
+<a href = "/attendee/destroy?id=<%=inserted.id%>"> Delete Attendee </a>
+<br><br><br>
+<a href = "/attendee/homepage"> Back to Homepage </a>

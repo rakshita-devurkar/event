@@ -35,29 +35,24 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  //'get/insert' : 'EventController.insert',
+ 
+  'get /event/new' : 'EventController.new',
   'post /event/insert' : 'EventController.insert',
-  'get /eventinsertview' : 'EventController.eventinsertview',
-  'get /viewevents' : 'EventController.viewevents',
-  'get /viewhomepage' : 'EventController.viewhomepage',
-  'get /oneevent' : 'EventController.oneevent',
+  'get /event/viewall' : 'EventController.viewall',
+  'get /homepage' : 'EventController.homepage',
+  'get /event/view' : 'EventController.view',
   'get /event/updateview' : 'EventController.updateview',
   'post /event/update' : 'EventController.update',
   'get /event/delete' : 'EventController.delete',
 
-  'get /attendeeinsertview' : 'AttendeeController.attendeeinsertview',
+  'get /attendee/new' : 'AttendeeController.new',
   'post /attendee/insert' : 'AttendeeController.insert',
-  'get /viewattendees' : 'AttendeeController.viewattendees',
-  'get /viewhomepage' : 'AttendeeController.viewhomepage',
-  'get /oneattendee' : 'AttendeeController.oneattendee',
+  'get /attendee/viewall' : 'AttendeeController.viewall',
+  'get /homepage' : 'AttendeeController.homepage',
+  'get /attendee/view' : 'AttendeeController.view',
   'get /attendee/updateview' : 'AttendeeController.updateview',
   'post /attendee/update' : 'AttendeeController.update',
   'get /attendee/delete' : 'AttendeeController.delete',
-
-
-
-  //'get /findone' : 'EventController.findone',
-  
 
   /***************************************************************************
   *                                                                          *

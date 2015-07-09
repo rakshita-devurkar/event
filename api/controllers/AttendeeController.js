@@ -6,11 +6,11 @@
  */
 
 module.exports = {
-	viewhomepage : function(req,res){
+	homepage : function(req,res){
 		res.view('homepage');
 	},
 
-	attendeeinsertview: function(req,res){
+	new: function(req,res){
 		Event.find(function(error,events){
 			if(error)
 				res.serverError();
@@ -24,29 +24,34 @@ module.exports = {
 	insert:function(req,res){
 		var attendeename = req.body.name;
 		var eventname = req.body.event1;
-		
+		sails.log(attendeename);
+		sails.log(eventname);
 		Attendee.create({name: attendeename, type : eventname}).exec(function(error,events){
 			if(error)
 				res.serverError();
 			else
-				res.ok("Attendee added");
+				res.ok("Attendee added.");
 		});
 	},
 
-	viewattendees: function(req,res){
+	viewall: function(req,res){
 		Attendee.find(function(error,attendee){
 			if(error)
 				res.serverError();
 			else
+			{
+				sails.log(attendee);
 				res.view('attendeeview',{inserted : attendee});
+			}
+				
 		});
 	},
 
-	oneattendee: function(req,res){
+	view: function(req,res){
 		var attendeeid = req.query.id;
-		Attendee.findOne({id:attendeeid}, function(error,found){
-			if(error)
-				res.serverError();
+		Attendee.findOne({id:attendeeid}, function(notFound,found){
+			if(notFound)
+				res.notFound();
 			else
 				res.view('oneattendee',{inserted : found});
 		});

@@ -8,7 +8,7 @@
 <% for(var i=0;i<inserted.length;i++){%>
        <tr>
            <td>
-              <a href = "/oneevent?id= <%= inserted[i].id%>"> 
+              <a href = "/event/view?id= <%= inserted[i].id%>"> 
               <%= inserted[i].name %> </a>
            </td>
            <td>
@@ -20,4 +20,4 @@
        </tr>       
       <% } %>
 </table> <br><br><br>
-<a href = "/viewhomepage"> Back to Homepage </a>
+<a href = "/event/homepage"> Back to Homepage </a>

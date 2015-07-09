@@ -9,9 +9,12 @@ module.exports = {
 
   attributes: {
 
-  	id : {type: 'integer',
-  		   autoIncrement: true
-  		},
+  	id : {
+  		type: 'integer',
+  		autoIncrement: true,
+	    primaryKey: true,
+	    unique: true,
+	},
     name : { type: 'string' },
     location : {type: 'string'},
     date : {type:'string'}

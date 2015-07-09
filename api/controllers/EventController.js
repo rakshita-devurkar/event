@@ -7,11 +7,11 @@
 
 module.exports = {
 	
-	viewhomepage : function(req,res){
+	homepage : function(req,res){
 		res.view('homepage');
 	},
 
-	eventinsertview: function(req,res){
+	new: function(req,res){
 		res.view('eventform');
 	},
 
@@ -34,7 +34,7 @@ module.exports = {
 	
 
 	
-	viewevents: function(req,res){
+	viewall: function(req,res){
 		Event.find(function(error,events){
 			if(error)
 				res.serverError();
@@ -43,7 +43,7 @@ module.exports = {
 		});
 	},
 
-	oneevent: function(req,res){
+	view: function(req,res){
 		var eventid = req.query.id;
 		sails.log(eventid);
 		Event.findOne({id:eventid}, function(error,found){

@@ -1,20 +1,53 @@
-<h1> All attendee </h1> <br>
-<table border =1>
-  <tr>
-    <td> Attendee name </td>
-    <td> Event </td>
-  </tr>
-  <% for(var i=0;i<inserted.length;i++){%>
-  <tr>
-    <td>
-      <a href = "/attendee/findone?id= <%= inserted[i].id%>">
-      <%= inserted[i].name %> </a>
-    </td>
-    <td>
-      <%= inserted[i].type %>
-    </td>
-
-  </tr>
-  <% } %>
-</table> <br><br><br>
-<a href = "/event/homepage"> Back to Homepage </a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project event</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="homepage">Home</a></li>
+            <li><a href="/event/find">Events</a></li>
+            <li><a href="/attendee/find">Attendee</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>List of Attendee</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0;i<inserted.length;i++){%>
+          <tr>
+            <td>
+              <a href = "/attendee/findone?id= <%= inserted[i].id%>">
+              <%= inserted[i].name %> </a>
+            </td>
+            <td>
+              <%= inserted[i].type %>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+    </div><a href="/Attendee/new" class="btn btn-info center-block btn-lg">Register for an event</a>
+  </div>
+</body>
+</html>

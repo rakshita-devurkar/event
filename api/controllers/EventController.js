@@ -5,9 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
-  homepage: function(req, res) {
-    res.view('homepage');
-  },
+ 
   new: function(req, res) {
     res.view();
   },
@@ -24,7 +22,7 @@ module.exports = {
       date: eventdate
     }).exec(function(error, events) {
       if (error) res.serverError();
-      else res.ok("Event added");
+      else res.redirect("http://localhost:1337/event/find");
     });
   },
   find: function(req, res) {
@@ -53,7 +51,7 @@ module.exports = {
     Event.findOne({
       id: eventid
     }, function(error, found) {
-      res.view('Event/edit', {
+      res.view('event/edit', {
         inserted: found
       });
     });
@@ -70,14 +68,15 @@ module.exports = {
       date: eventdate
     }).exec(function(error, users) {
       if (error) res.serverError();
-      else res.ok("Event Updated");
+      else res.redirect("http://localhost:1337/event/find");
     });
   },
   destroy: function(req, res) {
     var eventid = req.query.id;
+    sails.log(eventid);
     Event.destroy(eventid).exec(function(error, users) {
       if (error) res.serverError();
-      else res.ok("Event deleted");
+      else res.redirect("http://localhost:1337/event/find");
     });
   },
 };

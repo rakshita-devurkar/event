@@ -1,12 +1,44 @@
-<h1> Welcome </h1>
-<h2> Enter new attendee details </h2>
-<form action = "/attendee/create" method = POST>
-  Attendee name <br>
-  <input type="text" name="name">
-  <br><br>
-  Event<br>
-  <% for(var i=0;i<events.length;i++){%>
-  <input type = "radio" name = "event1" value = "<%=events[i].name%>"><%=events[i].name%><br>
-  <% } %>
-  <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Event Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="homepage">Home</a></li>
+            <li><a href="/event/find">Events</a></li>
+            <li><a href="/attendee/find">Attendee</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h2>New Attendee</h2>
+      <form role="form" action="/attendee/create" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="name" class="form-control" id="name" name="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label for="name">Select Event:</label>
+          <select name="event1">
+            <% for(var i=0;i<events.length;i++){%>
+            <option value="<%=events[i].name%>"><%=events[i].name%></option>
+            <% } %>
+        </select>
+          </div>
+          <button type="submit" class="btn btn-dafault">Register</button>
+        </form>
+      </div>
+    </body>
+  </html>

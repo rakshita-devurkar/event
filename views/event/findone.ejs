@@ -1,24 +1,54 @@
-<table border =1>
-  <tr>
-    <td> Eventname </td>
-    <td> Location </td>
-    <td> Date </td>
-  </tr>
-  <tr>
-    <td>
-      <%= inserted.name %>
-    </td>
-    <td>
-      <%= inserted.location %>
-    </td>
-    <td>
-      <%= inserted.date %>
-    </td>
-  </tr>
-</table>
-<br><br><br>
-<a href = "/event/edit?id=<%=inserted.id%>"> Update details </a>
-<br><br><br>
-<a href = "/event/destroy?id=<%=inserted.id%>"> Delete Event </a>
-<br><br><br>
-<a href = "/event/homepage"> Back to Homepage </a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project Event</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="homepage">Home</a></li>
+            <li><a href="/event/find">Events</a></li>
+            <li><a href="/attendee/find">Attendee</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Details of the event</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Location</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= inserted.name %>
+            </td>
+            <td>
+              <%= inserted.location %>
+            </td>
+            <td>
+              <%= inserted.date %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+        <button type="submit" class="btn btn-dafault" action="/event/destroy/?id="<%= inserted.id %>"" method="DELETE" >Delete </button>
+    </div>
+    </body>
+    </html>

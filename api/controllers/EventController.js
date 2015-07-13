@@ -5,7 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
- 
   new: function(req, res) {
     res.view();
   },
@@ -57,26 +56,26 @@ module.exports = {
     });
   },
   update: function(req, res) {
-    var eventid = req.body.id;
+    var eventid = req.params.id;
     var eventname = req.body.name;
     var eventlocation = req.body.location;
     var eventdate = req.body.date;
-    sails.log(eventid);
+    sails.log("update entry point");
     Event.update(eventid, {
       name: eventname,
       location: eventlocation,
       date: eventdate
     }).exec(function(error, users) {
       if (error) res.serverError();
-      else res.redirect("http://localhost:1337/event/find");
+      else res.ok("Success");
     });
   },
   destroy: function(req, res) {
-    var eventid = req.query.id;
+    var eventid = req.params.id;
     sails.log(eventid);
     Event.destroy(eventid).exec(function(error, users) {
       if (error) res.serverError();
-      else res.redirect("http://localhost:1337/event/find");
+      else res.ok("Done"); //res.redirect("http://localhost:1337/event/find");
     });
   },
 };

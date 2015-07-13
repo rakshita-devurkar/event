@@ -65,22 +65,34 @@ module.exports = {
     });
   },
   update: function(req, res) {
-    var attendeeid = req.body.id;
+    var attendeeid = req.params.id;
     var attendeename = req.body.name;
-    var eventname = req.body.event1;
+    var eventname = req.body.type;
+    sails.log(eventname);
     Attendee.update(attendeeid, {
       name: attendeename,
       type: eventname
     }).exec(function(error, users) {
       if (error) res.serverError();
-      else res.redirect("/attendee/find");
+      else res.ok("Success");
     });
   },
   destroy: function(req, res) {
-    var attendeeid = req.query.id;
+    var attendeeid = req.params.id;
     Attendee.destroy(attendeeid).exec(function(error, users) {
       if (error) res.serverError();
-      else res.redirect("/attendee/find");
+      else res.ok("Success");
+    });
+  },
+  details: function(req, res) {
+    var eventname = req.query.name;
+    Attendee.find({
+      type: eventname
+    }, function(notFound, found) {
+      if (notFound) res.notFound();
+      else res.view('event/details', {
+        inserted: found
+      });
     });
   },
 };

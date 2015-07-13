@@ -37,16 +37,18 @@ module.exports.routes = {
   'get /event/find': 'EventController.find',
   'get /event/findone': 'EventController.findone',
   'get /event/edit': 'EventController.edit',
-  'post /event/update': 'EventController.update',
-  'delete /event/destroy': 'EventController.destroy',
+  'put /event/update/:id': 'EventController.update',
+  'delete /event/destroy/:id': 'EventController.destroy',
+  '/event/find': 'EventController.find',
 
   'get /attendee/new': 'AttendeeController.new',
   'post /attendee/create': 'AttendeeController.create',
   'get /attendee/find': 'AttendeeController.find',
   'get /attendee/findone': 'AttendeeController.findone',
   'get /attendee/edit': 'AttendeeController.edit',
-  'post /attendee/update': 'AttendeeController.update',
-  'delete /attendee/delete': 'AttendeeController.destroy',
+  'put /attendee/update/:id': 'AttendeeController.update',
+  'delete /attendee/destroy/:id': 'AttendeeController.destroy',
+  'get /attendee/details': 'AttendeeController.details',
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

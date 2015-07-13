@@ -1,15 +1,66 @@
-<h3> Event details </h3><br><br>
-<form action = "/event/update" method = POST>
-  <%=inserted.id%> <br><br>
-  <input type = "hidden" name="id" value ="<%=inserted.id%>">
-  Event name <br>
-  <input type="text" placeholder = <%=inserted.name%> name="name">
-  <br>
-  Location:<br>
-  <input type="text" placeholder = <%=inserted.location%> name="location">
-  <br>
-  Date:<br>
-  <input type = "text" placeholder = <%=inserted.date%> name="date">
-  <br><br>
-  <input type="submit" value="Update">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Event Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/event/find">Events</a></li>
+            <li><a href="/attendee/find">Attendee</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h2>Event Details</h2>
+      <%=inserted.id%> <br><br>
+      <input type = "hidden" name="id" value ="<%=inserted.id%>">
+      <label for="name">Name:</label>
+      <input type="name"  id="name" name="name" placeholder= <%=inserted.name%>><br><br>
+      <label for="location">Location:</label>
+      <input type="location"  id="location" name="location" placeholder= <%=inserted.location%>><br><br>
+      <label for="date">Date:</label>
+      <input type="date"  id="date" name="date" placeholder=<%=inserted.date%>><br><br>
+      <input type="button" class="update_btn" eventid="<%=inserted.id%>" value="Update">
+    </div>
+  </body>
+</html>
+<script>
+$(document).ready(function(){
+  $(".update_btn").click(function(){
+    var eventid = $(this).attr("eventid");
+    var name = $("#name").val();
+    var location = $("#location").val();
+    var date = $("#date").val();
+    
+            $.ajax({
+          method: "PUT",
+          url: "/event/update/" +eventid,
+          data : {name:name, location:location, date:date},
+          
+          })
+          .success(function( msg ) {
+          if(msg =="Success")
+          {
+            alert("Updated");
+            window.location.replace("http://localhost:1337/event/find");
+          }
+          
+          }).fail(function(msg) {
+            console.log("Failed", msg);
+          });
+  });
+});
+</script>

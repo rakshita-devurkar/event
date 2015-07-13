@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -15,7 +16,7 @@
         </div>
         <div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="homepage">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="/event/find">Events</a></li>
             <li><a href="/attendee/find">Attendee</a></li>
           </ul>
@@ -35,12 +36,16 @@
           <% for(var i=0;i<inserted.length;i++){%>
           <tr>
             <td>
-              <a href = "/attendee/findone?id= <%= inserted[i].id%>">
+              <a href = "/attendee/edit?id= <%= inserted[i].id%>">
               <%= inserted[i].name %> </a>
             </td>
             <td>
               <%= inserted[i].type %>
             </td>
+            <td>
+              <input type="button" class="delete_btn" attendeeid="<%=inserted[i].id%>" value="Delete" >
+            </td>
+
           </tr>
           <% } %>
         </tbody>
@@ -51,3 +56,21 @@
   </div>
 </body>
 </html>
+<script>
+    $(document).ready(function(){
+      $(".delete_btn").click(function(){
+        var attendeeid = $(this).attr("attendeeid");
+        $.ajax({
+              method: "DELETE",
+              url: "/Attendee/destroy/" +attendeeid,
+              
+              })
+              .done(function( msg ) {
+              alert( "Deleted ");
+              location.reload();
+              }).fail(function(msg) {
+                console.log("Failed", msg);
+              });
+      });
+    });
+</script>

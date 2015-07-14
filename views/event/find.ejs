@@ -17,8 +17,8 @@
         <div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/event/find">Events</a></li>
-            <li><a href="/attendee/find">Attendee</a></li>
+            <li><a href="/event">Events</a></li>
+            <li><a href="/attendee">Attendee</a></li>
           </ul>
         </div>
       </div>
@@ -37,7 +37,7 @@
           <% for(var i=0;i<inserted.length;i++){%>
           <tr>
             <td>
-              <a href = "/event/edit?id= <%= inserted[i].id%>">
+              <a href = "/event/<%= inserted[i].id%>/edit">
               <%= inserted[i].name %> </a>
             </td>
             <td>
@@ -50,7 +50,7 @@
               <input type="button" class="delete_btn" eventid="<%=inserted[i].id%>" value="Delete" >
             </td>
             <td>
-              <a href = "/Attendee/details?name=<%=inserted[i].name%>">View Details</a>
+              <a href = "/event/<%=inserted[i].id%>/details">View Details</a>
             </td>
           </tr>
           <% } %>
@@ -68,8 +68,7 @@
         var eventid = $(this).attr("eventid");
         $.ajax({
               method: "DELETE",
-              url: "/event/destroy/" +eventid,
-              
+              url: "/event/" +eventid,
               })
               .done(function( msg ) {
               alert( "Deleted ");

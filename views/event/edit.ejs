@@ -17,8 +17,8 @@
         <div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/event/find">Events</a></li>
-            <li><a href="/attendee/find">Attendee</a></li>
+            <li><a href="/event">Events</a></li>
+            <li><a href="/attendee">Attendee</a></li>
           </ul>
         </div>
       </div>
@@ -47,7 +47,7 @@ $(document).ready(function(){
     
             $.ajax({
           method: "PUT",
-          url: "/event/update/" +eventid,
+          url: "/event/" +eventid,
           data : {name:name, location:location, date:date},
           
           })
@@ -55,7 +55,7 @@ $(document).ready(function(){
           if(msg =="Success")
           {
             alert("Updated");
-            window.location.replace("http://localhost:1337/event/find");
+            window.location.replace("http://localhost:1337/event");
           }
           
           }).fail(function(msg) {

@@ -34,21 +34,19 @@ module.exports.routes = {
   },
   'get /event/new': 'EventController.new',
   'post /event/create': 'EventController.create',
-  'get /event/find': 'EventController.find',
-  'get /event/findone': 'EventController.findone',
-  'get /event/edit': 'EventController.edit',
-  'put /event/update/:id': 'EventController.update',
-  'delete /event/destroy/:id': 'EventController.destroy',
-  '/event/find': 'EventController.find',
+  'get /event': 'EventController.find',
+  'get /event/:id/edit': 'EventController.edit',
+  'put /event/:id': 'EventController.update',
+  'delete /event/:id': 'EventController.destroy',
+  'get /event/:id/details': 'EventController.details',
 
   'get /attendee/new': 'AttendeeController.new',
   'post /attendee/create': 'AttendeeController.create',
-  'get /attendee/find': 'AttendeeController.find',
-  'get /attendee/findone': 'AttendeeController.findone',
-  'get /attendee/edit': 'AttendeeController.edit',
-  'put /attendee/update/:id': 'AttendeeController.update',
-  'delete /attendee/destroy/:id': 'AttendeeController.destroy',
-  'get /attendee/details': 'AttendeeController.details',
+  'get /attendee': 'AttendeeController.find',
+  'get /attendee/:id/edit': 'AttendeeController.edit',
+  'put /attendee/:id': 'AttendeeController.update',
+  'delete /attendee/:id': 'AttendeeController.destroy',
+  
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

@@ -8,7 +8,7 @@ module.exports = {
   new: function(req, res) {
     Event.find(function(error, events) {
       if (error) res.serverError();
-      else res.view('Attendee/new', {
+      else res.view('attendee/new', {
         events: events
       });
     });
@@ -31,32 +31,22 @@ module.exports = {
       if (error) res.serverError();
       else {
         sails.log(attendee);
-        res.view('Attendee/find', {
+        res.view('attendee/find', {
           inserted: attendee
         });
       }
     });
   },
-  findone: function(req, res) {
-    var attendeeid = req.query.id;
-    Attendee.findOne({
-      id: attendeeid
-    }, function(notFound, found) {
-      if (notFound) res.notFound();
-      else res.view('Attendee/findone', {
-        inserted: found
-      });
-    });
-  },
+  
   edit: function(req, res) {
-    var attendeeid = req.query.id;
+    var attendeeid = req.params.id;
     Event.find(function(error, events) {
       if (error) res.serverError();
       else {
         Attendee.findOne({
           id: attendeeid
         }, function(error, found) {
-          res.view('Attendee/edit', {
+          res.view('attendee/edit', {
             inserted: found,
             events: events
           });
@@ -84,15 +74,5 @@ module.exports = {
       else res.ok("Success");
     });
   },
-  details: function(req, res) {
-    var eventname = req.query.name;
-    Attendee.find({
-      type: eventname
-    }, function(notFound, found) {
-      if (notFound) res.notFound();
-      else res.view('event/details', {
-        inserted: found
-      });
-    });
-  },
+  
 };

@@ -21,7 +21,7 @@ module.exports = {
       date: eventdate
     }).exec(function(error, events) {
       if (error) res.serverError();
-      else res.redirect("http://localhost:1337/event/find");
+      else res.redirect("http://localhost:1337/event");
     });
   },
   find: function(req, res) {
@@ -32,20 +32,9 @@ module.exports = {
       });
     });
   },
-  findone: function(req, res) {
-    var eventid = req.query.id;
-    sails.log(eventid);
-    Event.findOne({
-      id: eventid
-    }, function(error, found) {
-      if (error) res.serverError();
-      else res.view('event/findone', {
-        inserted: found
-      });
-    });
-  },
+  
   edit: function(req, res) {
-    var eventid = req.query.id;
+    var eventid = req.params.id;
     sails.log(eventid);
     Event.findOne({
       id: eventid
@@ -75,7 +64,26 @@ module.exports = {
     sails.log(eventid);
     Event.destroy(eventid).exec(function(error, users) {
       if (error) res.serverError();
-      else res.ok("Done"); //res.redirect("http://localhost:1337/event/find");
+      else res.ok("Done");
+    
     });
+  },
+  details: function(req, res) {
+    var eventid = req.params.id;
+    Event.findOne({id:eventid},function(error,found){
+      if(error)
+        res.notFound();
+      else
+        var eventname = found.name;
+        sails.log(eventname);
+    Attendee.find({
+      type:eventname
+    }, function(notFound, found) {
+      if (notFound) res.notFound();
+      else res.view('event/details', {
+        inserted: found
+      });
+    });
+  });
   },
 };
